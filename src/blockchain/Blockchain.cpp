@@ -1986,7 +1986,7 @@ bool Blockchain::pushBlock(const Block& blockData, const std::vector<Transaction
 
     uint64_t in_amount = m_currency.getTransactionAllInputsAmount(transactions[i], block.height);
 	  uint64_t out_amount = getOutputAmount(transactions[i]);
-    uint64_t fee = in_amount < out_amount ? CryptoNote::parameters::MINIMUM_FEE : in_amount - out_amount;
+    uint64_t fee = in_amount < out_amount ? MINIMUM_FEE : in_amount - out_amount;
 
     bool isTransactionValid = true;
     if (block.bl.majorVersion == CURRENT_BLOCK_MAJOR && transactions[i].version > CURRENT_TRANSACTION_VERSION) {

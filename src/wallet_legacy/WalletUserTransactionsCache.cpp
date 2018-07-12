@@ -275,7 +275,7 @@ std::deque<std::unique_ptr<WalletLegacyEvent>> WalletUserTransactionsCache::onTr
 	if (isCoinbase){
 		transaction.fee = 0;
 	} else {
-		transaction.fee = txInfo.totalAmountIn < txInfo.totalAmountOut ? CryptoNote::parameters::MINIMUM_FEE : txInfo.totalAmountIn - txInfo.totalAmountOut;
+		transaction.fee = txInfo.totalAmountIn < txInfo.totalAmountOut ? MINIMUM_FEE : txInfo.totalAmountIn - txInfo.totalAmountOut;
 	}
     
     transaction.firstTransferId = WALLET_LEGACY_INVALID_TRANSFER_ID;

@@ -288,13 +288,13 @@ namespace CryptoNote
       }
 
       //at this moment we have hardcoded config
-      m_config.m_net_config.handshake_interval = CryptoNote::P2P_DEFAULT_HANDSHAKE_INTERVAL;
-      m_config.m_net_config.connections_count = CryptoNote::P2P_DEFAULT_CONNECTIONS_COUNT;
-      m_config.m_net_config.packet_max_size = CryptoNote::P2P_DEFAULT_PACKET_MAX_SIZE; //20 MB limit
+      m_config.m_net_config.handshake_interval = P2P_DEFAULT_HANDSHAKE_INTERVAL;
+      m_config.m_net_config.connections_count = P2P_DEFAULT_CONNECTIONS_COUNT;
+      m_config.m_net_config.packet_max_size = P2P_DEFAULT_PACKET_MAX_SIZE; //20 MB limit
       m_config.m_net_config.config_id = 0; // initial config
-      m_config.m_net_config.connection_timeout = CryptoNote::P2P_DEFAULT_CONNECTION_TIMEOUT;
-      m_config.m_net_config.ping_connection_timeout = CryptoNote::P2P_DEFAULT_PING_CONNECTION_TIMEOUT;
-      m_config.m_net_config.send_peerlist_sz = CryptoNote::P2P_DEFAULT_PEERS_IN_HANDSHAKE;
+      m_config.m_net_config.connection_timeout = P2P_DEFAULT_CONNECTION_TIMEOUT;
+      m_config.m_net_config.ping_connection_timeout = P2P_DEFAULT_PING_CONNECTION_TIMEOUT;
+      m_config.m_net_config.send_peerlist_sz = P2P_DEFAULT_PEERS_IN_HANDSHAKE;
 
       m_first_connection_maker_call = true;
     } catch (const std::exception& e) {
@@ -865,7 +865,7 @@ namespace CryptoNote
 
     if (!connect_to_peerlist(m_priority_peers)) return false;
 
-    size_t expected_white_connections = (m_config.m_net_config.connections_count * CryptoNote::P2P_DEFAULT_WHITELIST_CONNECTIONS_PERCENT) / 100;
+    size_t expected_white_connections = (m_config.m_net_config.connections_count * P2P_DEFAULT_WHITELIST_CONNECTIONS_PERCENT) / 100;
 
     size_t conn_count = get_outgoing_connections_count();
     if(conn_count < m_config.m_net_config.connections_count)
@@ -1001,7 +1001,7 @@ namespace CryptoNote
     }
 
     Crypto::PublicKey pk;
-    Common::podFromHex(CryptoNote::P2P_STAT_TRUSTED_PUB_KEY, pk);
+    Common::podFromHex(P2P_STAT_TRUSTED_PUB_KEY, pk);
     Crypto::Hash h = get_proof_of_trust_hash(tr);
     if (!Crypto::check_signature(h, pk, tr.sign)) {
       logger(ERROR) << "check_trust failed: sign check failed";

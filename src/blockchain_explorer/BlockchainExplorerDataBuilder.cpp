@@ -101,7 +101,7 @@ bool BlockchainExplorerDataBuilder::fillBlockDetails(const Block &block, BlockDe
   }
 
   std::vector<size_t> blocksSizes;
-  if (!core.getBackwardBlocksSizes(blockDetails.height, blocksSizes, parameters::CRYPTONOTE_REWARD_BLOCKS_WINDOW)) {
+  if (!core.getBackwardBlocksSizes(blockDetails.height, blocksSizes, CRYPTONOTE_REWARD_BLOCKS_WINDOW)) {
     return false;
   }
   blockDetails.sizeMedian = median(blocksSizes);
@@ -218,7 +218,7 @@ bool BlockchainExplorerDataBuilder::fillTransactionDetails(const Transaction& tr
     transactionDetails.fee = 0;
     transactionDetails.mixin = 0;
   } else {
-    transactionDetails.fee = inputsAmount < transactionDetails.totalOutputsAmount ? CryptoNote::parameters::MINIMUM_FEE : core.currency().getTransactionFee(transaction, transactionDetails.blockHeight);
+    transactionDetails.fee = inputsAmount < transactionDetails.totalOutputsAmount ? MINIMUM_FEE : core.currency().getTransactionFee(transaction, transactionDetails.blockHeight);
     uint64_t mixin;
     if (!getMixin(transaction, mixin)) {
       return false;

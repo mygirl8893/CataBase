@@ -117,7 +117,7 @@ size_t Currency::blockGrantedFullRewardZoneByBlockVersion(uint8_t blockMajorVers
   if (blockMajorVersion >= (CURRENT_BLOCK_MAJOR + 2)) {
     return m_blockGrantedFullRewardZone;
   } else {
-    return CryptoNote::parameters::CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V1;
+    return CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V1;
   }
 }
 //------------------------------------------------------------- Seperator Code -------------------------------------------------------------//
@@ -236,8 +236,8 @@ bool Currency::getTransactionFee(const Transaction& tx, uint64_t& fee, uint32_t 
 
   if (amount_out > amount_in){
     // interest shows up in the output of the W/D transactions and W/Ds always have min fee
-    if (tx.inputs.size() > 0 && tx.outputs.size() > 0 && amount_out > amount_in + parameters::MINIMUM_FEE) {
-      fee = parameters::MINIMUM_FEE;
+    if (tx.inputs.size() > 0 && tx.outputs.size() > 0 && amount_out > amount_in + MINIMUM_FEE) {
+      fee = MINIMUM_FEE;
     } else {
       return false;
     }
@@ -552,9 +552,9 @@ difficulty_type Currency::nextDifficulty1(std::vector<uint64_t> timestamps,
 difficulty_type Currency::nextDifficulty(std::vector<uint64_t> timestamps,
 	std::vector<difficulty_type> cumulativeDifficulties, uint64_t height) const {
 
-	int64_t T = parameters::DIFFICULTY_TARGET; // set to 20 temporarily
-	int64_t N = parameters::DIFFICULTY_WINDOW_V3 - 1; //  N=45, 60, and 90 for T=600, 120, 60.
-	int64_t FTL = parameters::CRYPTONOTE_BLOCK_FUTURE_TIME_LIMIT_V1; // < 3xT
+	int64_t T = DIFFICULTY_TARGET; // set to 20 temporarily
+	int64_t N = DIFFICULTY_WINDOW_V3 - 1; //  N=45, 60, and 90 for T=600, 120, 60.
+	int64_t FTL = CRYPTONOTE_BLOCK_FUTURE_TIME_LIMIT_V1; // < 3xT
 	int64_t L(0), ST, sum_3_ST(0), next_D, prev_D;
 
 	// Hardcode difficulty for 61 blocks after fork height: 
@@ -685,71 +685,71 @@ size_t Currency::getApproximateMaximumInputCount(size_t transactionSize, size_t 
 }
 //------------------------------------------------------------- Seperator Code -------------------------------------------------------------//
 CurrencyBuilder::CurrencyBuilder(Logging::ILogger& log) : m_currency(log) {
-  maxBlockNumber(parameters::CRYPTONOTE_MAX_BLOCK_NUMBER);
-  maxBlockBlobSize(parameters::CRYPTONOTE_MAX_BLOCK_BLOB_SIZE);
-  maxTxSize(parameters::CRYPTONOTE_MAX_TX_SIZE);
-  publicAddressBase58Prefix(parameters::CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX);
-  minedMoneyUnlockWindow(parameters::CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW);
+  maxBlockNumber(CRYPTONOTE_MAX_BLOCK_NUMBER);
+  maxBlockBlobSize(CRYPTONOTE_MAX_BLOCK_BLOB_SIZE);
+  maxTxSize(CRYPTONOTE_MAX_TX_SIZE);
+  publicAddressBase58Prefix(CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX);
+  minedMoneyUnlockWindow(CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW);
 
-  timestampCheckWindow(parameters::BLOCKCHAIN_TIMESTAMP_CHECK_WINDOW);
-  blockFutureTimeLimit(parameters::CRYPTONOTE_BLOCK_FUTURE_TIME_LIMIT);
-  blockFutureTimeLimit_v1(parameters::CRYPTONOTE_BLOCK_FUTURE_TIME_LIMIT_V1);
+  timestampCheckWindow(BLOCKCHAIN_TIMESTAMP_CHECK_WINDOW);
+  blockFutureTimeLimit(CRYPTONOTE_BLOCK_FUTURE_TIME_LIMIT);
+  blockFutureTimeLimit_v1(CRYPTONOTE_BLOCK_FUTURE_TIME_LIMIT_V1);
 
-  moneySupply(parameters::MONEY_SUPPLY);
-  emissionSpeedFactor(parameters::EMISSION_SPEED_FACTOR);
-  cryptonoteCoinVersion(parameters::CRYPTONOTE_COIN_VERSION);
-  genesisBlockReward(parameters::PRE_BLOCK_REWARD);
-  tailemisionReward(parameters::TAIL_EMISSION_REWARD);
+  moneySupply(MONEY_SUPPLY);
+  emissionSpeedFactor(EMISSION_SPEED_FACTOR);
+  cryptonoteCoinVersion(CRYPTONOTE_COIN_VERSION);
+  genesisBlockReward(PRE_BLOCK_REWARD);
+  tailemisionReward(TAIL_EMISSION_REWARD);
 
-  rewardBlocksWindow(parameters::CRYPTONOTE_REWARD_BLOCKS_WINDOW);
-  minMixin(parameters::MIN_MIXIN);
-  blockGrantedFullRewardZone(parameters::CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE);
-  minerTxBlobReservedSize(parameters::CRYPTONOTE_COINBASE_BLOB_RESERVED_SIZE);
+  rewardBlocksWindow(CRYPTONOTE_REWARD_BLOCKS_WINDOW);
+  minMixin(MIN_MIXIN);
+  blockGrantedFullRewardZone(CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE);
+  minerTxBlobReservedSize(CRYPTONOTE_COINBASE_BLOB_RESERVED_SIZE);
 
-  numberOfDecimalPlaces(parameters::CRYPTONOTE_DISPLAY_DECIMAL_POINT);
+  numberOfDecimalPlaces(CRYPTONOTE_DISPLAY_DECIMAL_POINT);
 
-  mininumFee(parameters::MINIMUM_FEE);
-  defaultDustThreshold(parameters::DEFAULT_DUST_THRESHOLD);
+  mininumFee(MINIMUM_FEE);
+  defaultDustThreshold(DEFAULT_DUST_THRESHOLD);
 
-  difficultyTarget(parameters::DIFFICULTY_TARGET);
-  difficultyWindow(parameters::DIFFICULTY_WINDOW);
-  difficultyCut(parameters::DIFFICULTY_CUT);
+  difficultyTarget(DIFFICULTY_TARGET);
+  difficultyWindow(DIFFICULTY_WINDOW);
+  difficultyCut(DIFFICULTY_CUT);
 
-  depositMinAmount(parameters::DEPOSIT_MIN_AMOUNT);
-  depositMinTerm(parameters::DEPOSIT_MIN_TERM);
-  depositMaxTerm(parameters::DEPOSIT_MAX_TERM);
-  depositMinTotalRateFactor(parameters::DEPOSIT_MIN_TOTAL_RATE_FACTOR);
-  depositMaxTotalRate(parameters::DEPOSIT_MAX_TOTAL_RATE);
+  depositMinAmount(DEPOSIT_MIN_AMOUNT);
+  depositMinTerm(DEPOSIT_MIN_TERM);
+  depositMaxTerm(DEPOSIT_MAX_TERM);
+  depositMinTotalRateFactor(DEPOSIT_MIN_TOTAL_RATE_FACTOR);
+  depositMaxTotalRate(DEPOSIT_MAX_TOTAL_RATE);
 
-  maxBlockSizeInitial(parameters::MAX_BLOCK_SIZE_INITIAL);
-  maxBlockSizeGrowthSpeedNumerator(parameters::MAX_BLOCK_SIZE_GROWTH_SPEED_NUMERATOR);
-  maxBlockSizeGrowthSpeedDenominator(parameters::MAX_BLOCK_SIZE_GROWTH_SPEED_DENOMINATOR);
+  maxBlockSizeInitial(MAX_BLOCK_SIZE_INITIAL);
+  maxBlockSizeGrowthSpeedNumerator(MAX_BLOCK_SIZE_GROWTH_SPEED_NUMERATOR);
+  maxBlockSizeGrowthSpeedDenominator(MAX_BLOCK_SIZE_GROWTH_SPEED_DENOMINATOR);
 
-  lockedTxAllowedDeltaSeconds(parameters::CRYPTONOTE_LOCKED_TX_ALLOWED_DELTA_SECONDS);
-  lockedTxAllowedDeltaBlocks(parameters::CRYPTONOTE_LOCKED_TX_ALLOWED_DELTA_BLOCKS);
+  lockedTxAllowedDeltaSeconds(CRYPTONOTE_LOCKED_TX_ALLOWED_DELTA_SECONDS);
+  lockedTxAllowedDeltaBlocks(CRYPTONOTE_LOCKED_TX_ALLOWED_DELTA_BLOCKS);
 
-  mempoolTxLiveTime(parameters::CRYPTONOTE_MEMPOOL_TX_LIVETIME);
-  mempoolTxFromAltBlockLiveTime(parameters::CRYPTONOTE_MEMPOOL_TX_FROM_ALT_BLOCK_LIVETIME);
-  numberOfPeriodsToForgetTxDeletedFromPool(parameters::CRYPTONOTE_NUMBER_OF_PERIODS_TO_FORGET_TX_DELETED_FROM_POOL);
+  mempoolTxLiveTime(CRYPTONOTE_MEMPOOL_TX_LIVETIME);
+  mempoolTxFromAltBlockLiveTime(CRYPTONOTE_MEMPOOL_TX_FROM_ALT_BLOCK_LIVETIME);
+  numberOfPeriodsToForgetTxDeletedFromPool(CRYPTONOTE_NUMBER_OF_PERIODS_TO_FORGET_TX_DELETED_FROM_POOL);
 
-  upgradeHeightv1(parameters::UPGRADE_HEIGHT_V1);
-  upgradeHeightv2(parameters::UPGRADE_HEIGHT_V2);
-  upgradeHeightv3(parameters::UPGRADE_HEIGHT_V3);
-  upgradeHeightv4(parameters::UPGRADE_HEIGHT_V4);
-  upgradeVotingThreshold(parameters::UPGRADE_VOTING_THRESHOLD);
-  upgradeVotingWindow(parameters::UPGRADE_VOTING_WINDOW);
-  upgradeWindow(parameters::UPGRADE_WINDOW);
+  upgradeHeightv1(UPGRADE_HEIGHT_V1);
+  upgradeHeightv2(UPGRADE_HEIGHT_V2);
+  upgradeHeightv3(UPGRADE_HEIGHT_V3);
+  upgradeHeightv4(UPGRADE_HEIGHT_V4);
+  upgradeVotingThreshold(UPGRADE_VOTING_THRESHOLD);
+  upgradeVotingWindow(UPGRADE_VOTING_WINDOW);
+  upgradeWindow(UPGRADE_WINDOW);
 
-  transactionMaxSize(parameters::CRYPTONOTE_MAX_TX_SIZE_LIMIT);
-  fusionTxMaxSize(parameters::FUSION_TX_MAX_SIZE);
-  fusionTxMinInputCount(parameters::FUSION_TX_MIN_INPUT_COUNT);
-  fusionTxMinInOutCountRatio(parameters::FUSION_TX_MIN_IN_OUT_COUNT_RATIO);
+  transactionMaxSize(CRYPTONOTE_MAX_TX_SIZE_LIMIT);
+  fusionTxMaxSize(FUSION_TX_MAX_SIZE);
+  fusionTxMinInputCount(FUSION_TX_MIN_INPUT_COUNT);
+  fusionTxMinInOutCountRatio(FUSION_TX_MIN_IN_OUT_COUNT_RATIO);
 
-  blocksFileName(parameters::CRYPTONOTE_BLOCKS_FILENAME);
-  blocksCacheFileName(parameters::CRYPTONOTE_BLOCKSCACHE_FILENAME);
-  blockIndexesFileName(parameters::CRYPTONOTE_BLOCKINDEXES_FILENAME);
-  txPoolFileName(parameters::CRYPTONOTE_POOLDATA_FILENAME);
-  blockchainIndicesFileName(parameters::CRYPTONOTE_BLOCKCHAIN_INDICES_FILENAME);
+  blocksFileName(CRYPTONOTE_BLOCKS_FILENAME);
+  blocksCacheFileName(CRYPTONOTE_BLOCKSCACHE_FILENAME);
+  blockIndexesFileName(CRYPTONOTE_BLOCKINDEXES_FILENAME);
+  txPoolFileName(CRYPTONOTE_POOLDATA_FILENAME);
+  blockchainIndicesFileName(CRYPTONOTE_BLOCKCHAIN_INDICES_FILENAME);
 
   testnet(false);
 }

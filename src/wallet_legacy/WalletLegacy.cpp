@@ -235,7 +235,7 @@ void WalletLegacy::initAndLoad(std::istream& source, const std::string& password
 void WalletLegacy::initSync() {
   AccountSubscription sub;
   sub.keys = reinterpret_cast<const AccountKeys&>(m_account.getAccountKeys());
-  sub.transactionSpendableAge = CryptoNote::parameters::CRYPTONOTE_DEFAULT_TX_SPENDABLE_AGE;
+  sub.transactionSpendableAge = CRYPTONOTE_DEFAULT_TX_SPENDABLE_AGE;
   sub.syncStart.height = 0;
   sub.syncStart.timestamp = m_account.get_createtime() - ACCOUNT_CREATE_TIME_ACCURACY;
   

@@ -152,7 +152,7 @@ WalletTransactionSender::WalletTransactionSender(const Currency& currency, Walle
   m_isStoping(false),
   m_keys(keys),
   m_transferDetails(transfersContainer),
-  m_upperTransactionSizeLimit(parameters::CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_CURRENT / 4 - m_currency.minerTxBlobReservedSize()),
+  m_upperTransactionSizeLimit(CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_CURRENT / 4 - m_currency.minerTxBlobReservedSize()),
   m_node(node){
   }
 
