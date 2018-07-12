@@ -262,7 +262,7 @@ bool core::check_tx_semantic(const Transaction& tx, bool keeped_by_block, uint32
     return false;
   }
 
-  uint64_t amount_in = m_currency.getTransactionAllInputsAmount(tx);
+  uint64_t amount_in = m_currency.getTransactionAllInputsAmount(tx, height);
   uint64_t amount_out = get_outs_money_amount(tx);
 
   if (amount_in < amount_out) {

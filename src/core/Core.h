@@ -8,7 +8,7 @@
 #include "protocol/CryptoNoteProtocolHandlerCommon.h"
 #include "Currency.h"
 #include "trans/TransactionPool.h"
-#include "block/Blockchain.h"
+#include "blockchain/Blockchain.h"
 #include "IMinerHandler.h"
 #include "mine/MinerConfig.h"
 #include "ICore.h"
@@ -17,7 +17,7 @@
 
 #include "System/Dispatcher.h"
 #include "MessageQueue.h"
-#include "block/BlockchainMessages.h"
+#include "blockchain/BlockchainMessages.h"
 
 #include <log/LoggerMessage.h>
 
@@ -75,8 +75,8 @@ namespace CryptoNote {
      virtual bool handleIncomingTransaction(const Transaction& tx, const Crypto::Hash& txHash, size_t blobSize, tx_verification_context& tvc, bool keptByBlock, uint32_t height) override;
      virtual std::error_code executeLocked(const std::function<std::error_code()>& func) override;
      
-     virtual bool addMessageQueue(MessageQueue<BlockchainMessage>& messageQueue) override;
-     virtual bool removeMessageQueue(MessageQueue<BlockchainMessage>& messageQueue) override;
+     virtual bool addMessageQueue(MessageQueue<BlockchainMessage>& messageQueue);
+     virtual bool removeMessageQueue(MessageQueue<BlockchainMessage>& messageQueue);
       
      virtual std::time_t getStartTime() const;
      uint32_t get_current_blockchain_height();

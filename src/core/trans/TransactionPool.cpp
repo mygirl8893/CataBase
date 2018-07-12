@@ -20,7 +20,7 @@
 #include "CryptoNoteConfig.h"
 #include "transfers/TransfersContainer.h"
 #include "IWallet.h"
-#include "core/block/Blockchain.h"
+#include "blockchain/Blockchain.h"
 #include "TransactionExtra.h"
 
 using namespace Logging;
@@ -108,7 +108,7 @@ namespace CryptoNote {
       return false;
     }
 
-    uint64_t inputs_amount = m_currency.getTransactionAllInputsAmount(tx);
+    uint64_t inputs_amount = m_currency.getTransactionAllInputsAmount(tx, height);
     uint64_t outputs_amount = get_outs_money_amount(tx);
 
     if (outputs_amount > inputs_amount) {

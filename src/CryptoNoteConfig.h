@@ -96,7 +96,7 @@ const char     MINER_CONFIG_FILE_NAME[]                      = "miner_conf.json"
 
 } // parameters
 
-const char     CRYPTONOTE_NAME[]                             = "catalyst";
+#define CRYPTONOTE_NAME 	                               "catalyst"
 const char     GENESIS_COINBASE_TX_HEX[]                     = "010a01ff0001c5f5b7d9a43a029b2e4c0281c0b02e7c53291a94d1d0cbff8883f8024f5142ee494ffbbd0880712101c8b3eb861829c338eded4298e4ed66a1e41cbcc884a779c177e46f480014e08d";
 
 const uint32_t GENESIS_NONCE                                 = 70;
@@ -112,8 +112,8 @@ const size_t   BLOCKS_IDS_SYNCHRONIZING_DEFAULT_COUNT        = 10000; // by defa
 const size_t   BLOCKS_SYNCHRONIZING_DEFAULT_COUNT            = 128; // by default, blocks count in blocks downloading
 const size_t   COMMAND_RPC_GET_BLOCKS_FAST_MAX_COUNT         = 1000;
 
-const int      P2P_DEFAULT_PORT                              = 5290;
-const int      RPC_DEFAULT_PORT                              = 5295;
+#define P2P_DEFAULT_PORT                             			5290
+#define RPC_DEFAULT_PORT		                                5295
 
 const size_t   P2P_LOCAL_WHITE_PEERLIST_LIMIT                = 1000;
 const size_t   P2P_LOCAL_GRAY_PEERLIST_LIMIT                 = 5000;

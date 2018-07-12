@@ -526,7 +526,7 @@ void Blockchain::rebuildCache() {
         }
       }
 
-      interest += m_currency.calculateTotalTransactionInterest(transaction.tx); //block.height); //block.height shows 0 wrongly sometimes apparently
+      interest += m_currency.calculateTotalTransactionInterest(transaction.tx, b); //block.height); //block.height shows 0 wrongly sometimes apparently
     }
 
     pushToDepositIndex(block, interest);
@@ -1984,7 +1984,7 @@ bool Blockchain::pushBlock(const Block& blockData, const std::vector<Transaction
     block.transactions.back().tx = transactions[i];
     size_t blob_size = toBinaryArray(transactions[i]).size();
 
-    uint64_t in_amount = m_currency.getTransactionAllInputsAmount(transactions[i]);
+    uint64_t in_amount = m_currency.getTransactionAllInputsAmount(transactions[i], block.height);
 	  uint64_t out_amount = getOutputAmount(transactions[i]);
     uint64_t fee = in_amount < out_amount ? CryptoNote::parameters::MINIMUM_FEE : in_amount - out_amount;
 
@@ -2013,7 +2013,7 @@ bool Blockchain::pushBlock(const Block& blockData, const std::vector<Transaction
 
     cumulative_block_size += blob_size;
     fee_summary += fee;
-    interestSummary += m_currency.calculateTotalTransactionInterest(transactions[i]);
+    interestSummary += m_currency.calculateTotalTransactionInterest(transactions[i], block.height);
   }
 
   if (!checkCumulativeBlockSize(blockHash, cumulative_block_size, block.height)) {

@@ -93,7 +93,7 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/CTestCustom.cmake ${CMAKE_CURRENT_BIN
 
 project(catalyst)
 
-include_directories(include class src modules "${CMAKE_CURRENT_BINARY_DIR}/version")  
+include_directories(iclass class src modules "${CMAKE_CURRENT_BINARY_DIR}/version")  
 
 # Check whether we're on a 32-bit or 64-bit system
 if(CMAKE_SIZEOF_VOID_P EQUAL "8")

@@ -211,7 +211,7 @@ bool BlockchainExplorerDataBuilder::fillTransactionDetails(const Transaction& tr
   if (!get_inputs_money_amount(transaction, inputsAmount)) {
     return false;
   }
-  transactionDetails.totalInputsAmount = core.currency().getTransactionAllInputsAmount(transaction);
+  transactionDetails.totalInputsAmount = core.currency().getTransactionAllInputsAmount(transaction, transactionDetails.blockHeight);
 
   if (transaction.inputs.size() > 0 && transaction.inputs.front().type() == typeid(BaseInput)) {
     //It's gen transaction
