@@ -51,7 +51,7 @@ public:
   size_t difficultyWindow() const { return m_difficultyWindow; }
   size_t difficultyCut() const { return m_difficultyCut; }
   size_t difficultyBlocksCount1() const { return m_difficultyWindow; }
-  size_t difficultyBlocksCount() const { return parameters::DIFFICULTY_WINDOW_V3; }
+  size_t difficultyBlocksCount() const { return DIFFICULTY_WINDOW_V3; }
 
   uint64_t depositMinAmount() const { return m_depositMinAmount; }
   uint32_t depositMinTerm() const { return m_depositMinTerm; }
@@ -96,10 +96,10 @@ public:
 
   bool getBlockReward(uint8_t blockMajorVersion,size_t medianSize, size_t currentBlockSize, uint64_t alreadyGeneratedCoins, uint64_t fee, uint32_t height,
   uint64_t& reward, int64_t& emissionChange) const;
-  uint64_t calculateInterest(uint64_t amount, uint32_t term) const;
-  uint64_t calculateTotalTransactionInterest(const Transaction& tx) const;
-  uint64_t getTransactionInputAmount(const TransactionInput& in) const;
-  uint64_t getTransactionAllInputsAmount(const Transaction& tx) const;
+  uint64_t calculateInterest(uint64_t amount, uint32_t term, uint32_t height) const;
+  uint64_t calculateTotalTransactionInterest(const Transaction& tx, uint32_t height) const;
+  uint64_t getTransactionInputAmount(const TransactionInput& in, uint32_t height) const;
+  uint64_t getTransactionAllInputsAmount(const Transaction& tx, uint32_t height) const;
   bool getTransactionFee(const Transaction& tx, uint64_t & fee, uint32_t height) const;
   uint64_t getTransactionFee(const Transaction& tx, uint32_t height) const;
   size_t maxBlockCumulativeSize(uint64_t height) const;

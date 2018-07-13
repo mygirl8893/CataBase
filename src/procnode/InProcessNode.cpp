@@ -150,7 +150,7 @@ std::error_code InProcessNode::doGetNewBlocks(std::vector<Crypto::Hash>&& knownB
     }
 
     uint32_t totalBlockCount;
-    std::vector<Crypto::Hash> supplement = core.findBlockchainSupplement(knownBlockIds, CryptoNote::COMMAND_RPC_GET_BLOCKS_FAST_MAX_COUNT, totalBlockCount, startHeight);
+    std::vector<Crypto::Hash> supplement = core.findBlockchainSupplement(knownBlockIds, COMMAND_RPC_GET_BLOCKS_FAST_MAX_COUNT, totalBlockCount, startHeight);
 
     for (const auto& blockId : supplement) {
       assert(core.have_block(blockId));

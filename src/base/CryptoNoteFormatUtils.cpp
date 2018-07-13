@@ -340,7 +340,7 @@ bool check_inputs_overflow(const TransactionPrefix &tx) {
       amount = boost::get<MultisignatureInput>(in).amount;
       if (boost::get<MultisignatureInput>(in).term != 0) {
         uint64_t hi;
-        uint64_t lo = mul128(amount, CryptoNote::parameters::DEPOSIT_MAX_TOTAL_RATE, &hi);
+        uint64_t lo = mul128(amount, DEPOSIT_MAX_TOTAL_RATE, &hi);
         uint64_t maxInterestHi;
         uint64_t maxInterestLo;
         div128_32(hi, lo, 100, &maxInterestHi, &maxInterestLo);

@@ -152,7 +152,7 @@ WalletTransactionSender::WalletTransactionSender(const Currency& currency, Walle
   m_isStoping(false),
   m_keys(keys),
   m_transferDetails(transfersContainer),
-  m_upperTransactionSizeLimit(parameters::CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_CURRENT / 4 - m_currency.minerTxBlobReservedSize()),
+  m_upperTransactionSizeLimit(CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_CURRENT / 4 - m_currency.minerTxBlobReservedSize()),
   m_node(node){
   }
 
@@ -418,7 +418,7 @@ std::unique_ptr<WalletRequest> WalletTransactionSender::doSendMultisigTransactio
 		height = m_node.getLastKnownBlockHeight();
 		if (!height) height = 4294967295;
 	}
-	deposit.interest = m_currency.calculateInterest(deposit.amount, deposit.term);
+	deposit.interest = m_currency.calculateInterest(deposit.amount, deposit.term, height);
     deposit.locked = true;
     DepositId depositId = m_transactionsCache.insertDeposit(deposit, depositIndex, transaction->getTransactionHash());
     transactionInfo.firstDepositId = depositId;

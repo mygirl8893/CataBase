@@ -4,12 +4,12 @@
 [submodule "modules"]
 	path = modules
 	url = https://github.com/Nur1Labs/modules.git
-[submodule "include"]
-	path = include
-	url = https://github.com/Nur1Labs/include.git
 [submodule "utils"]
 	path = utils
 	url = https://github.com/Nur1Labs/utils.git
 [submodule "library"]
 	path = library
 	url = https://github.com/Nur1Labs/library.git
+[submodule "iclass"]
+	path = iclass
+	url = https://github.com/Nur1Labs/iclass.git

@@ -20,7 +20,7 @@
 #include "CryptoNoteConfig.h"
 #include "transfers/TransfersContainer.h"
 #include "IWallet.h"
-#include "core/block/Blockchain.h"
+#include "blockchain/Blockchain.h"
 #include "TransactionExtra.h"
 
 using namespace Logging;
@@ -108,7 +108,7 @@ namespace CryptoNote {
       return false;
     }
 
-    uint64_t inputs_amount = m_currency.getTransactionAllInputsAmount(tx);
+    uint64_t inputs_amount = m_currency.getTransactionAllInputsAmount(tx, height);
     uint64_t outputs_amount = get_outs_money_amount(tx);
 
     if (outputs_amount > inputs_amount) {
@@ -125,7 +125,7 @@ namespace CryptoNote {
       ttl.ttl = 0;
     }
 
-    const uint64_t fee = inputs_amount < outputs_amount ? CryptoNote::parameters::MINIMUM_FEE : inputs_amount - outputs_amount;
+    const uint64_t fee = inputs_amount < outputs_amount ? MINIMUM_FEE : inputs_amount - outputs_amount;
     bool isFusionTransaction = fee == 0 && m_currency.isFusionTransaction(tx, blobSize);
     if (!keptByBlock && !isFusionTransaction && ttl.ttl == 0 && fee < m_currency.minimumFee()) {
       logger(INFO) << "transaction fee is not enough: " << m_currency.formatAmount(fee) <<

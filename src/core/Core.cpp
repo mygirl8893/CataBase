@@ -262,7 +262,7 @@ bool core::check_tx_semantic(const Transaction& tx, bool keeped_by_block, uint32
     return false;
   }
 
-  uint64_t amount_in = m_currency.getTransactionAllInputsAmount(tx);
+  uint64_t amount_in = m_currency.getTransactionAllInputsAmount(tx, height);
   uint64_t amount_out = get_outs_money_amount(tx);
 
   if (amount_in < amount_out) {
@@ -386,7 +386,7 @@ bool core::get_block_template(Block& b, const AccountPublicAddress& adr, difficu
     // https://github.com/graft-project/GraftNetwork/pull/118/commits
 
     //jagerman's patch 
-	uint64_t check_window = m_blockchain.getForkVersion() < 1 ? parameters::BLOCKCHAIN_TIMESTAMP_CHECK_WINDOW : parameters::BLOCKCHAIN_TIMESTAMP_CHECK_WINDOW_V1;
+	uint64_t check_window = m_blockchain.getForkVersion() < 1 ? BLOCKCHAIN_TIMESTAMP_CHECK_WINDOW : BLOCKCHAIN_TIMESTAMP_CHECK_WINDOW_V1;
 	if (m_blockchain.getCurrentBlockchainHeight() >= check_window) {
 		std::vector<uint64_t> timestamps;
 		uint64_t height = m_blockchain.getCurrentBlockchainHeight();

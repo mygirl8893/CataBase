@@ -168,7 +168,7 @@ namespace CryptoNote
       m_config = boost::value_initialized<decltype(m_config)>();
 
       std::string filebuf;
-      if (Common::loadFileToString(m_config_folder_path + "/" + CryptoNote::parameters::MINER_CONFIG_FILE_NAME, filebuf)) {
+      if (Common::loadFileToString(m_config_folder_path + "/" + MINER_CONFIG_FILE_NAME, filebuf)) {
         loadFromJson(m_config, filebuf);
       }
 
@@ -395,7 +395,7 @@ namespace CryptoNote
           --m_config.current_extra_message_index;
         } else {
           //success update, lets update config
-          Common::saveStringToFile(m_config_folder_path + "/" + CryptoNote::parameters::MINER_CONFIG_FILE_NAME, storeToJson(m_config));
+          Common::saveStringToFile(m_config_folder_path + "/" + MINER_CONFIG_FILE_NAME, storeToJson(m_config));
         }
       }
 

@@ -24,7 +24,7 @@
 #include "ITransactionValidator.h"
 #include "ITxPoolObserver.h"
 #include "VerificationContext.h"
-#include "core/block/BlockchainIndices.h"
+#include "blockchain/BlockchainIndices.h"
 
 #include <log/LoggerRef.h>
 
