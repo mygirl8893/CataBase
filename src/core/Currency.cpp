@@ -558,9 +558,9 @@ difficulty_type Currency::nextDifficulty(std::vector<uint64_t> timestamps,
 	int64_t L(0), ST, sum_3_ST(0), next_D, prev_D;
 
 	// Hardcode difficulty for 61 blocks after fork height: 
-	//if (height >= parameters::UPGRADE_HEIGHT_V4 && height <= parameters::UPGRADE_HEIGHT_V4 + N) {
-		//return 1000000000; //by default put this for not overloaded diff ~ Yuka
-	//}
+	if (height >= UPGRADE_HEIGHT_V4 && height <= UPGRADE_HEIGHT_V4 + N) {
+		return 100000; //by default put this for not overloaded diff ~ Yuka
+	}
 
 	// TS and CD vectors must be size N+1 after startup, and element N is most recent block.
 
