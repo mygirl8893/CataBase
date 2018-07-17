@@ -90,8 +90,8 @@ namespace parameters {
 
 } // parameters
 
-#define CRYPTONOTE_NAME 	                        "catalyst"
-#define GENESIS_COINBASE_TX_HEX                       	"010a01ff0001c5f5b7d9a43a029b2e4c0281c0b02e7c53291a94d1d0cbff8883f8024f5142ee494ffbbd0880712101c8b3eb861829c338eded4298e4ed66a1e41cbcc884a779c177e46f480014e08d"
+#define CRYPTONOTE_NAME 	                        "ecbase"
+#define GENESIS_COINBASE_TX_HEX                       	""
 
 #define GENESIS_NONCE                                   70
 #define GENESIS_TIMESTAMP                               1529201466
@@ -125,8 +125,8 @@ namespace parameters {
 #define P2P_STAT_TRUSTED_PUB_KEY                        "FF9507CA55455F37A3B783EE2C5123B8B6A34A0C5CAAE050922C6254161480C1"
 
 const std::initializer_list<const char*> SEED_NODES = {
-  "seed1.catalyst.cash:5290",
-  "seed2.catalyst.cash:5290",
+  ":5290",
+  //"seed2.catalyst.cash:5290",
 };
 
 struct CheckpointData {
