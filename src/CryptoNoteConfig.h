@@ -25,8 +25,8 @@ namespace parameters {
 
 #define CRYPTONOTE_REWARD_BLOCKS_WINDOW                 100
 #define CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE       1000000 //size of block (bytes) after which reward for block calculated using block size
-#define CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V2        1000000
-#define CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V1        100000
+#define CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V2    1000000
+#define CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V1    100000
 #define CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_CURRENT   CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE
 #define CRYPTONOTE_COINBASE_BLOB_RESERVED_SIZE              600
 #define CRYPTONOTE_DISPLAY_DECIMAL_POINT                    8
@@ -90,8 +90,8 @@ namespace parameters {
 
 } // parameters
 
-#define CRYPTONOTE_NAME 	                               "catalyst"
-#define GENESIS_COINBASE_TX_HEX                       "010a01ff0001c5f5b7d9a43a029b2e4c0281c0b02e7c53291a94d1d0cbff8883f8024f5142ee494ffbbd0880712101c8b3eb861829c338eded4298e4ed66a1e41cbcc884a779c177e46f480014e08d"
+#define CRYPTONOTE_NAME 	                        "catalyst"
+#define GENESIS_COINBASE_TX_HEX                       	"010a01ff0001c5f5b7d9a43a029b2e4c0281c0b02e7c53291a94d1d0cbff8883f8024f5142ee494ffbbd0880712101c8b3eb861829c338eded4298e4ed66a1e41cbcc884a779c177e46f480014e08d"
 
 #define GENESIS_NONCE                                   70
 #define GENESIS_TIMESTAMP                               1529201466
@@ -106,8 +106,8 @@ namespace parameters {
 #define BLOCKS_SYNCHRONIZING_DEFAULT_COUNT              128 // by default, blocks count in blocks downloading
 #define COMMAND_RPC_GET_BLOCKS_FAST_MAX_COUNT           1000
 
-#define P2P_DEFAULT_PORT                             			5290
-#define RPC_DEFAULT_PORT		                                5295
+#define P2P_DEFAULT_PORT                             	5290
+#define RPC_DEFAULT_PORT		                5295
 
 #define P2P_LOCAL_WHITE_PEERLIST_LIMIT                  1000
 #define P2P_LOCAL_GRAY_PEERLIST_LIMIT                   5000
@@ -141,23 +141,12 @@ __attribute__((unused))
 // You may add here other checkpoints using the following format:
 // {<block height>, "<block hash>"},
 const std::initializer_list<CheckpointData> CHECKPOINTS = {
-  {1000,	"3818c26bbb67d523ef131939ce8adf98b1c5266f1da535728624701997aedee8" },
-  {2000,	"0b988d37f053ab50a25ebc67eb951dc6af52cf5cf452921332026ef50026c3d8" },
-  {3000,	"e950923633648b5d4fa2166fdde572accf03d9b5ab068c1c7b8ac914cddc61d3" },
-  {4000,	"d8be2bea155b1d0e255d2d12d6492a368f0a32a1d4617dbd7a9471253851dd17" },	
-  {5000,	"9a7f649903c61fb9142a2d90582b02b56ba1e7ac0278466c7db51b0110989454" },
-  {6000,	"804b9c6eba79b0d001bdec87e252a2f9241d773b5ca6466b218a5054e87110f0" },
-  {7045,	"9415d1b923b4c0ea8a987891f69e596460d1af42b97e1e1acb3860b627f8cfec" },
-  {7859,	"773a99066c160bd832298b017f9f468be4d7ebc3a1865be01494ff0bea3c29af" },
-  {8543,	"8fd6df542054977c9ffd2f50c7898ba527812048d18d2e3369d3a194bf76cbb2" },
-  {9000,	"059692b22bf85921e5f2b6f02ae8dbc7797a9b1ea3c50babd10564595b6260d5" },
-  {10000,	"469d59599a69f582a151d941548f6534c4f72db73b548d28058b4fa038348dd9" },
-  {11000,	"22cee7a42c0385e78fb8b89ab651cd0ecb399abeaade7ba60b5e801d288c0fae" },
+ 
 };
 
 const std::map<const uint32_t, const uint8_t> Version = {
 	// {BlockIndex , Version}
-	{ 2500000, 1 }
+	//{ 2500000, 1 }
 };
 
 } // CryptoNote
