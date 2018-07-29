@@ -842,7 +842,7 @@ bool RpcServer::f_on_pool_json(const F_COMMAND_RPC_GET_POOL::request& req, F_COM
     uint64_t amount_out = getOutputAmount(tx);
   
     transaction_short.hash = Common::podToHex(getObjectHash(tx));
-    transaction_short.fee = amount_in < amount_out + parameters::MINIMUM_FEE ? parameters::MINIMUM_FEE : amount_in - amount_out;
+    transaction_short.fee = amount_in < amount_out + MINIMUM_FEE ? MINIMUM_FEE : amount_in - amount_out;
     transaction_short.amount_out = amount_out;
     transaction_short.size = getObjectBinarySize(tx);
     res.transactions.push_back(transaction_short);  
