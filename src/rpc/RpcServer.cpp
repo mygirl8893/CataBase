@@ -689,8 +689,8 @@ bool RpcServer::f_on_block_json(const F_COMMAND_RPC_GET_BLOCK_DETAILS::request& 
 
     transaction_short.hash = Common::podToHex(getObjectHash(tx));
     transaction_short.fee =
-			amount_in < amount_out + parameters::MINIMUM_FEE //account for interest in output, it always has minimum fee
-			? parameters::MINIMUM_FEE
+			amount_in < amount_out + MINIMUM_FEE //account for interest in output, it always has minimum fee
+			? MINIMUM_FEE
 			: amount_in - amount_out;
     transaction_short.amount_out = amount_out;
     transaction_short.size = getObjectBinarySize(tx);
@@ -757,8 +757,8 @@ bool RpcServer::f_on_transaction_json(const F_COMMAND_RPC_GET_TRANSACTION_DETAIL
     res.txDetails.fee = 0;
   else {
 	res.txDetails.fee =
-		amount_in < amount_out + parameters::MINIMUM_FEE //account for interest in output, it always has minimum fee
-		? parameters::MINIMUM_FEE
+		amount_in < amount_out + MINIMUM_FEE //account for interest in output, it always has minimum fee
+		? MINIMUM_FEE
 		: amount_in - amount_out;
   }
   res.txDetails.amount_out = amount_out;
