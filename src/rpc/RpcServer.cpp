@@ -606,7 +606,7 @@ bool RpcServer::f_on_block_json(const F_COMMAND_RPC_GET_BLOCK_DETAILS::request& 
   res.block.reward = block_header.reward;
 
   std::vector<size_t> blocksSizes;
-  if (!m_core.getBackwardBlocksSizes(res.block.height, blocksSizes, parameters::CRYPTONOTE_REWARD_BLOCKS_WINDOW)) {
+  if (!m_core.getBackwardBlocksSizes(res.block.height, blocksSizes, CRYPTONOTE_REWARD_BLOCKS_WINDOW)) {
     return false;
   }
   res.block.sizeMedian = Common::medianValue(blocksSizes);
