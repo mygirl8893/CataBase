@@ -965,7 +965,7 @@ bool simple_wallet::init(const boost::program_options::variables_map& vm) {
 	  }
 
 	  if (Tools::Base58::decode_addr(private_key_string, addressPrefix, data) 
-		&& addressPrefix == parameters::CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX 
+		&& addressPrefix == CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX 
 		&& data.size() == sizeof(keys)) {
 	        std::memcpy(&keys, data.data(), sizeof(keys));
 	  }
@@ -1580,7 +1580,7 @@ bool simple_wallet::export_keys(const std::vector<std::string>& args/* = std::ve
   m_wallet->getAccountKeys(keys);
   std::cout << "Spend secret key: " << Common::podToHex(keys.spendSecretKey) << std::endl;
   std::cout << "View secret key: " << Common::podToHex(keys.viewSecretKey) << std::endl;
-  std::cout << "Private keys: " << Tools::Base58::encode_addr(parameters::CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX,
+  std::cout << "Private keys: " << Tools::Base58::encode_addr(CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX,
     std::string(reinterpret_cast<char*>(&keys), sizeof(keys))) << std::endl;
   
   return true;
