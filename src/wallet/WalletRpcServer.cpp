@@ -386,7 +386,7 @@ bool wallet_rpc_server::on_query_key(const wallet_rpc::COMMAND_RPC_QUERY_KEY::re
    if (0 == req.key_type.compare("paperwallet")) {
 	AccountKeys keys;
 	m_wallet.getAccountKeys(keys);
-	res.key = Tools::Base58::encode_addr(parameters::CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX,
+	res.key = Tools::Base58::encode_addr(CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX,
 		std::string(reinterpret_cast<char*>(&keys), sizeof(keys)));
    }
   return true;
