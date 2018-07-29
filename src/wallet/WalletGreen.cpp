@@ -129,7 +129,7 @@ WalletGreen::WalletGreen(System::Dispatcher& dispatcher, const Currency& currenc
   m_pendingBalance(0),
   m_transactionSoftLockTime(transactionSoftLockTime)
 {
-  m_upperTransactionSizeLimit = parameters::CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_CURRENT / 4 - m_currency.minerTxBlobReservedSize();
+  m_upperTransactionSizeLimit = CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_CURRENT / 4 - m_currency.minerTxBlobReservedSize();
   m_readyEvent.set();
 }
 
@@ -1494,7 +1494,7 @@ size_t WalletGreen::insertBlockchainTransaction(const TransactionInformation& in
   if (tx.isBase) {
     tx.fee = 0;
   } else {
-    tx.fee = info.totalAmountIn < info.totalAmountOut ? CryptoNote::parameters::MINIMUM_FEE : info.totalAmountIn - info.totalAmountOut;
+    tx.fee = info.totalAmountIn < info.totalAmountOut ? MINIMUM_FEE : info.totalAmountIn - info.totalAmountOut;
   }
 
   tx.unlockTime = info.unlockTime;
