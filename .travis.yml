@@ -25,6 +25,8 @@ install:
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install librocksdb-dev
   -y            ; fi
 script:
+- sudo git submodule init
+- sudo git submodule update --remote
 - mkdir build && cd build
 - cmake -DCMAKE_BUILD_TYPE=Release -DSTATIC=true .. && make
 before_deploy:
