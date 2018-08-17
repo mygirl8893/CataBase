@@ -27,6 +27,8 @@ install:
 script:
 - sudo git submodule init
 - sudo git submodule update --remote
+- cd modules/cmake
+- ./bootstrap && make && make install
 - mkdir build && cd build
 - cmake -DCMAKE_BUILD_TYPE=Release -DSTATIC=true .. && make
 before_deploy:
