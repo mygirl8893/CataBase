@@ -17,6 +17,10 @@ matrix:
     - MATRIX_EVAL="CC=gcc-4.9 && CXX=g++-4.9
   - os: osx
 before_install:
+- sudo git submodule init
+- sudo git submodule update --remote
+- cd modules/cmake
+- ./bootstrap && make && make install
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo add-apt-repository ppa:ethcore/ethcore
   -y    ; fi
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get update -q                            ;
@@ -25,9 +29,6 @@ install:
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install librocksdb-dev
   -y            ; fi
 script:
-- sudo git submodule init
-- sudo git submodule update --remote
-
 - mkdir build && cd build
 - cmake -DCMAKE_BUILD_TYPE=Release -DSTATIC=true .. && make
 before_deploy:
