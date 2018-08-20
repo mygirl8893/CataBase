@@ -19,15 +19,15 @@ matrix:
 before_install:
 - sudo git submodule init
 - sudo git submodule update --remote
-
+install:
 script:
 - mkdir build && cd build
 - cmake -DCMAKE_BUILD_TYPE=Release -DSTATIC=true .. && make
 before_deploy:
 - cd src
 - mkdir CataBase-${TRAVIS_TAG}
-- mv TurtleCoind miner zedwallet walletd poolwallet turtlecoin-${TRAVIS_TAG}/
-- tar cvfz CataBase-${TRAVIS_TAG}-${TRAVIS_OS_NAME}.tar.gz turtlecoin-${TRAVIS_TAG}/
+- mv ecbased miner poolwallet walletd CataBase-${TRAVIS_TAG}/
+- tar cvfz CataBase-${TRAVIS_TAG}-${TRAVIS_OS_NAME}.tar.gz CataBase-${TRAVIS_TAG}/
 deploy:
   provider: releases
   api_key:
