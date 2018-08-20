@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/mygirl8893/CataBase.svg?branch=master)](https://travis-ci.org/mygirl8893/CataBase)
-
+[![Build status](https://ci.appveyor.com/api/projects/status/an6je6l48eawteyg?svg=true)](https://ci.appveyor.com/project/mygirl8893/etocoin)
 <h2>Introduction</h2>
 
 We’ve built a custom platform to Future of Cryptocurrency. CryptonoteEvo is a platform technology for next generation of cryptonight.
